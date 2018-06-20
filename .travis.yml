@@ -1,0 +1,15 @@
+language: go
+sudo: false
+
+go:
+- 1.6.x
+- 1.7.x
+- 1.8.x
+- 1.9.x
+
+install:
+  - go get -v -d -t github.com/dingdayu/md5x
+
+script:
+  - go build
+  - ./md5x -dir $HOME
