@@ -1,15 +1,23 @@
+sudo: required
+
 language: go
-sudo: false
+
+services:
+  - docker
 
 go:
-- 1.6.x
-- 1.7.x
 - 1.8.x
 - 1.9.x
+- 1.10.x
 
-install:
+before_install:
   - go get -v -d -t github.com/dingdayu/md5x
 
-script:
+install:
   - go build
   - ./md5x -dir $HOME
+
+script:
+  - docker build -t dingdayu/md5x .
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push dingdayu/md5x
