@@ -6,18 +6,26 @@ services:
   - docker
 
 go:
-- 1.8.x
-- 1.9.x
-- 1.10.x
+  - 1.9.x
+  - 1.10.x
 
 before_install:
   - go get -v -d -t github.com/dingdayu/md5x
 
 install:
   - go build .
-  - ./md5x -dir $HOME
 
 script:
+  - ./md5x -dir $HOME
+
+after_success:
   - docker build -t dingdayu/md5x .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push dingdayu/md5x
+
+notifications:
+  email:
+    recipients:
+    - 614422099@qq.com
+    on_success: always
+    on_failure: always
