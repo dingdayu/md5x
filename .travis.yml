@@ -19,5 +19,5 @@ install:
 
 script:
   - docker build -t dingdayu/md5x .
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push dingdayu/md5x
