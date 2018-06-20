@@ -14,7 +14,7 @@ before_install:
   - go get -v -d -t github.com/dingdayu/md5x
 
 install:
-  - go build
+  - go build .
   - ./md5x -dir $HOME
 
 script:
