@@ -31,4 +31,4 @@ deploy: false
 test_script:
   - go build
   - dir /a *
-  - md5x.exe -file README.md
+  - md5x.exe -dir ./
