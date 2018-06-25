@@ -11,7 +11,7 @@ import (
 const filechunk = 8192 // we settle for 8KB
 const size = 1024 * 1.5 * 1024 * 1024
 
-type FileI = struct {
+type FileI struct {
 	Name     string
 	FileInfo os.FileInfo
 	Path     string
