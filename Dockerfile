@@ -1,4 +1,4 @@
-FROM golang:latest
+FROM alpine:latest
 
 VOLUME /data
 ADD md5x /
