@@ -17,12 +17,18 @@ install:
   - go build .
 
 script:
-  - ./md5x -dir $HOME
+  - ./md5x -dir ./
 
 after_success:
   - docker build -t dingdayu/md5x .
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push dingdayu/md5x
+
+deploy:
+  provider: script
+  script:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker push dingdayu/md5x
+  on:
+    branch: master
 
 notifications:
   email:
