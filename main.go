@@ -84,17 +84,17 @@ func main() {
 		}
 	}
 
-	if out != "" {
+	if export != "" {
 		// 导出所有MD5记录
-		ExportMD5(DirFiles, out)
+		ExportMD5(DirFiles, export)
 	}
 
 	// 提取重复记录
 	t := ExtractRepeat(DirFiles)
 
-	if export != "" {
+	if out != "" {
 		// 导出所有MD5记录
-		ExportRepeat(t, export)
+		ExportRepeat(t, out)
 	}
 
 	// 遍历输出
